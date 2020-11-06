@@ -1,9 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>DELI-VERY</title>
-    </head>
-    <body>
-        <h1>Hello World!!!</h1>
-    </body>
+
+<head>
+  <title>Nordin's whopping burgers</title> <!-- Titeln, uppbarligen -->
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css"> <!-- Länken till css dokumentet -->
+</head>
+
+<body>
+  <main>
+    <section id="headSection">
+      <img id=headPic src="https://upload.wikimedia.org/wikipedia/commons/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg" title="nature background">
+      <h1 id="headText">Welcome to Nordin's whopping burgers!</h1>
+    </section>
+
+    <section id="order">
+      <center>
+        <h3>Please select the burger of your choice</h3>
+        <p>Here you pick the burger you want to order </p>
+      </center>
+
+      <table>
+        <thead>
+          <tr>
+            <th>The vanila</th>
+            <th>The Cheese Delux</th>
+            <th>The paranormal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src=https://www.burgerdudes.se/wp-content/uploads/2019/11/groundburger_timeout-620x380.jpg alt="The normal
+                  burger" title="Our vanila burger" style width="310px" height="190px"></td>
+            <td><img src=https://www.burgerdudes.se/wp-content/uploads/2019/11/garage_bar_fr_fb_veckans_24okt_med-620x380.jpg alt="The cheesy
+                  burger" title="Our cheese delux burger" style width="310px" height="190px"></td>
+            <td><img src=https://www.burgerdudes.se/wp-content/uploads/2019/11/bleecker_foodism-620x380.jpg alt="The unnormal
+                  burger" title="We have no idea what this is" style width="310px" height="190px"></td>
+          </tr>
+          <tr>
+            <td>
+              <ul>
+                <section class="description">
+                  <!-- omringar varje beskrivning med classen description -->
+                  <li>Lactose free</li>
+                  <li>No gluten!</li>
+                </section class="description">
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <section class="description">
+                  <li>Contains milkproducts (duh)</li>
+                  <li>Way too much gluten</li>
+                </section class="description">
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <section class="description">
+                  <li>Super dry bread</li>
+                  <li>No idea what that black thing is</li>
+                </section class="description">
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="contact">
+      <form>
+        <h3>Customer Information</h3>
+        <p>Here you can provide the information needed to deliver </p>
+        <h3>Delivery information:</h3>
+        <p>
+          <label for="fullname">Full name</label><br>
+          <input type="text" id="fullname" name="fn" required="required" placeholder="First- and last name">
+        </p>
+        <p>
+          <label for="email">E-mail</label><br>
+          <input type="text" id="email" name="em" required="required" placeholder="E-mail adress">
+        </p>
+        <p>
+          <label for="street">Street</label><br>
+          <input type="number" id="street" name="st" required="required" placeholder="Street name">
+        </p>
+        <p>
+          <label for="house">House</label><br>
+          <input type="text" id="house" name="ho" required="required" placeholder="House number">
+        </p>
+        <p>
+          <label for="payment">Payment</label><br>
+          <select id="payment" name="pay">
+            <option selected="selected">Credit card</option>
+            <option>Swish</option>
+            <option>Klarna</option>
+          </select>
+        </p>
+        <p>
+          <input type="radio" id="female" name=Gender>
+          <label for="female">Female</label><br />
+
+          <input type="radio" id="male" name=Gender>
+          <label for="male">Male</label><br />
+
+          <input type="radio" id="nonBinary" name=Gender>
+          <label for="nonBinary">Non-binary</label><br />
+
+          <input type="radio" id="annon" name=Gender checked="checked">
+          <label for="annon">Do not wish to provide</label><br />
+      </form>
+
+      <!-- Hitta hur man sparar könet, med Value -->
+      </p>
+    </section>
+
+    <button type"submit"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS_vUgItqYtpWUf7wCfU_OGfD2NfgajhAn5qQ&usqp=CAU" title="Order your whopping burger!" style width="310px">
+
+  </main>
+  <footer>
+    <hr>
+    <p> Author: Gabriel Nordin <br>
+    <p> Mail: gabrielnordin1@hotmail.com </p>
+  </footer>
+</body>
+
 </html>
