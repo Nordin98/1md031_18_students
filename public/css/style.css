@@ -28,10 +28,24 @@ button {
   border: 2pt solid black;
 }
 
-table {
-  width: 100vh;
-  margin: 0 auto; /* automatisk margin baserad på storleken av webbläsaren */
-}
+.wrapper {
+     margin: 10pt;
+     padding: 10pt;
+     display: grid;
+     grid-gap: 20px;
+     grid-template-columns: 310px 310px 310px;
+     background-color: #0C1C24;
+     color: white;
+     width: 80%;
+ }
+
+ .burger {
+     background-color: #0C1C24;
+     color: white;
+     border-radius: 5px;
+     padding: 10px;
+     font-size: 150%;
+ }
 
 .description {
   font-weight: bold;

@@ -4,13 +4,26 @@
 <head>
   <title>Nordin's whopping burgers</title> <!-- Titeln, uppbarligen -->
   <meta charset="utf-8" />
+
+  <script src="https://vuejs.org/js/vue.js"></script>
+  <script src="/socket.io/socket.io.js" defer></script>
+
+  <script type="text/javascript" src="js/menu.js" defer></script>
+  <script src="js/js_script.js" defer></script>
+  <script src="js/vue_script.js" defer></script> <!-- länkade båda js filerna till html -->
+  <script src="js/deli-very.js" defer></script>
+  <script src="/vue/vue.js" defer></script>
+
   <link rel="stylesheet" type="text/css" href="/css/style.css"> <!-- Länken till css dokumentet -->
+  <link rel="stylesheet" href="css/deli-very.css">
+
 </head>
 
 <body>
   <main>
+
     <section id="headSection">
-      <img id=headPic src="https://upload.wikimedia.org/wikipedia/commons/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg" title="nature background">
+      <img id="headPic" src="https://upload.wikimedia.org/wikipedia/commons/5/57/Cumulus_Clouds_over_Yellow_Prairie2.jpg" title="nature background">
       <h1 id="headText">Welcome to Nordin's whopping burgers!</h1>
     </section>
 
@@ -20,53 +33,30 @@
         <p>Here you pick the burger you want to order </p>
       </center>
 
-      <table>
-        <thead>
-          <tr>
-            <th>The vanila</th>
-            <th>The Cheese Delux</th>
-            <th>The paranormal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><img src=https://www.burgerdudes.se/wp-content/uploads/2019/11/groundburger_timeout-620x380.jpg alt="The normal
-                  burger" title="Our vanila burger" style width="310px" height="190px"></td>
-            <td><img src=https://www.burgerdudes.se/wp-content/uploads/2019/11/garage_bar_fr_fb_veckans_24okt_med-620x380.jpg alt="The cheesy
-                  burger" title="Our cheese delux burger" style width="310px" height="190px"></td>
-            <td><img src=https://www.burgerdudes.se/wp-content/uploads/2019/11/bleecker_foodism-620x380.jpg alt="The unnormal
-                  burger" title="We have no idea what this is" style width="310px" height="190px"></td>
-          </tr>
-          <tr>
-            <td>
-              <ul>
-                <section class="description">
-                  <!-- omringar varje beskrivning med classen description -->
-                  <li>Lactose free</li>
-                  <li>No gluten!</li>
-                </section class="description">
-              </ul>
-            </td>
-            <td>
-              <ul>
-                <section class="description">
-                  <li>Contains milkproducts (duh)</li>
-                  <li>Way too much gluten</li>
-                </section class="description">
-              </ul>
-            </td>
-            <td>
-              <ul>
-                <section class="description">
-                  <li>Super dry bread</li>
-                  <li>No idea what that black thing is</li>
-                </section class="description">
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <center>
+        <div id='burgerList'>
+          <div class="wrapper">
+            <div v-for="burger in burgers">
+
+              {{burger.name}}
+              <div><img :src="burger.img" width="310px" height="200px"></div>
+
+              <input type="checkbox" class="burgerCheckBox" name="burgerBox" :value=burger.name>
+              <label for="selectedBurger">Select</label>
+
+              <div v-if=burger.lactose!=false>
+                <p>Lactose</p>
+              </div>
+              <div v-if=burger.gluten!=false>
+                <p>Gluten</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </center>
     </section>
+
 
     <section id="contact">
       <form>
@@ -74,48 +64,67 @@
         <p>Here you can provide the information needed to deliver </p>
         <h3>Delivery information:</h3>
         <p>
-          <label for="fullname">Full name</label><br>
+          <label for="fullname">Full name </label><br>
           <input type="text" id="fullname" name="fn" required="required" placeholder="First- and last name">
         </p>
         <p>
-          <label for="email">E-mail</label><br>
+          <label for="email">E-mail </label><br>
           <input type="text" id="email" name="em" required="required" placeholder="E-mail adress">
         </p>
-        <p>
-          <label for="street">Street</label><br>
-          <input type="number" id="street" name="st" required="required" placeholder="Street name">
+        <!--
+         <p>
+          <label for="street">Street </label><br>
+          <input type="text" id="street" name="st" required="required" placeholder="Street name">
         </p>
+
         <p>
-          <label for="house">House</label><br>
-          <input type="text" id="house" name="ho" required="required" placeholder="House number">
+          <label for="house">House </label><br>
+          <input type="number" id="house" name="ho" required="required" placeholder="House number">
         </p>
+        -->
         <p>
-          <label for="payment">Payment</label><br>
+          <label for="payment">Payment </label><br>
           <select id="payment" name="pay">
-            <option selected="selected">Credit card</option>
-            <option>Swish</option>
-            <option>Klarna</option>
+            <option selected="selected">Credit card </option>
+            <option>Swish </option>
+            <option>Klarna </option>
           </select>
         </p>
         <p>
           <input type="radio" id="female" name=Gender>
-          <label for="female">Female</label><br />
+          <label for="female">Female </label><br />
 
           <input type="radio" id="male" name=Gender>
-          <label for="male">Male</label><br />
+          <label for="male">Male </label><br />
 
           <input type="radio" id="nonBinary" name=Gender>
-          <label for="nonBinary">Non-binary</label><br />
+          <label for="nonBinary">Non-binary </label><br />
 
           <input type="radio" id="annon" name=Gender checked="checked">
-          <label for="annon">Do not wish to provide</label><br />
+          <label for="annon">Do not wish to provide </label><br />
       </form>
-
-      <!-- Hitta hur man sparar könet, med Value -->
       </p>
     </section>
 
-    <button type"submit"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS_vUgItqYtpWUf7wCfU_OGfD2NfgajhAn5qQ&usqp=CAU" title="Order your whopping burger!" style width="310px">
+    <section id=map>
+      <h1> Click in the map! </h1>
+      <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+      <div class="view-box">
+        <div id="dots" v-on:click="displayOrder">
+          <div v-bind:style="{ left: wordLocation.details.x + 'px', top: wordLocation.details.y + 'px'}">
+            T
+          </div>
+        </div>
+      </div>
+
+      <button v-on:click="addOrder" type="submit" id="orderButton"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS_vUgItqYtpWUf7wCfU_OGfD2NfgajhAn5qQ&usqp=CAU" title="Order your whopping burger!" style width="310px"></button>
+      <div>
+        <p id="confirmation"></p>
+      </div>
+      <div>
+        <p id="yourOrder"></p>
+      </div>
+    </section>
 
   </main>
   <footer>
